@@ -5,6 +5,7 @@
   color: rgb(75, 71, 83);
 }
 
+
 /* Global Styles */
 
 body {
@@ -86,17 +87,20 @@ main {
   flex-direction: column;
 }
 
-.main-content article {
+.main-content article,
+.form-fields > div {
   box-sizing: inherit;
   line-height: 24px;
 }
 
-.main-content article > div {
+.main-content article > div,
+.form-fields:not(.active) {
   padding-inline: 40px;
   text-align: start;
 }
 
-.main-content article > div > div {
+.main-content article > div > div,
+.form-fields:not(.active) > div > div {
   width: 100%;
   margin-block: 32px 96px;
 }
@@ -107,7 +111,7 @@ main {
   width: 84px;
   font-size: 20px;
   border-radius: 4px;
-  letter-spacing: -.1px;
+  letter-spacing: -0.1px;
 }
 
 .controllers {
@@ -251,7 +255,7 @@ main {
 }
 
 .form-header {
-  display: flex;
+  position: relative;
 }
 
 .form-fields > div {
@@ -262,7 +266,6 @@ main {
 }
 
 .form-fields .form-header + div {
-  padding-left: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -283,6 +286,8 @@ main {
   line-height: 24px;
   color: rgb(75, 71, 83);
   padding: 4px 10px 0 0;
+  position: absolute;
+  left: -36px;
 }
 
 .form-header p {
@@ -314,12 +319,16 @@ main {
   width: 100%;
   border: 0;
   outline: 0;
-  font-size: 24px;
+  font-size: 30px;
   padding-bottom: 8px;
   box-shadow: rgba(75, 71, 83, 0.3) 0px 1px;
   background: transparent;
   line-height: 30px;
   transition: background-color 1e8s ease 0s, box-shadow 0.1s ease-out 0s;
+}
+
+.form .input{
+  font-size: 24px;
 }
 
 .input::placeholder {
@@ -550,15 +559,14 @@ main {
   }
 }
 
-
 @media screen and (min-width: 1440px) {
-  .form-wrapper{
+  .form-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .form-wrapper > div{
+  .form-wrapper > div {
     max-width: 720px;
     margin-inline: auto;
   }

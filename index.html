@@ -60,10 +60,10 @@
       <form class="form-content">
         <article class="form-fields active">
           <div class="image-wrapper">
-            <img src="./assets/land-img.jpeg" alt="land-img" />
+            <img src="./assets/land-img.png" alt="land-img" />
           </div>
           <div class="form-wrapper">
-            <div>
+            <div class="fields">
               <div class="form-header">
                 <div class="number-wrapper">
                   <span>1</span>
@@ -141,252 +141,263 @@
         </article>
         <article class="form-fields">
           <div>
-            <div class="form-header">
-              <div class="number-wrapper">
-                <span>2</span>
-                <svg height="10" width="11" class="shouldFlipIfRtl">
-                  <path
-                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
-                  ></path>
-                  <path d="M8 4v2H0V4z"></path>
-                </svg>
-              </div>
-              <p>
-                What amount of money would you like to have for your end-of-life
-                preparations? This can be any amount you want and the funds will
-                go directly to whoever you wish upon your death.*
-              </p>
-            </div>
             <div>
-              <div class="form-field">
-                <input
-                  type="number"
-                  class="input"
-                  id="money_amount"
-                  min="0"
-                  required
-                  placeholder="Type your answer here..."
-                />
-              </div>
-              <div class="btn-wrapper">
-                <button
-                  type="button"
-                  class="btn ok-btn"
-                  data-input_id="money_amount"
-                >
-                  Ok
-                  <svg height="13" width="16">
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>2</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
                     <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
                     ></path>
+                    <path d="M8 4v2H0V4z"></path>
                   </svg>
-                </button>
-                <span>press <strong>Enter ↵</strong> </span>
+                </div>
+                <p>
+                  What amount of money would you like to have for your
+                  end-of-life preparations? This can be any amount you want and
+                  the funds will go directly to whoever you wish upon your
+                  death.*
+                </p>
               </div>
-            </div>
-          </div>
-        </article>
-        <article class="form-fields">
-          <div>
-            <div class="form-header">
-              <div class="number-wrapper">
-                <span>3</span>
-                <svg height="10" width="11" class="shouldFlipIfRtl">
-                  <path
-                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
-                  ></path>
-                  <path d="M8 4v2H0V4z"></path>
-                </svg>
-              </div>
-              <p>What state do you live in?</p>
-            </div>
-            <div>
-              <div class="select">
-                <div class="select-btn-wrapper">
+              <div>
+                <div class="form-field">
                   <input
-                    type="text"
+                    type="number"
                     class="input"
-                    id="state_option_input"
-                    placeholder="Type or select an option"
+                    id="money_amount"
+                    min="0"
+                    required
+                    placeholder="Type your answer here..."
                   />
-                  <div class="select-state selectBtn"></div>
                 </div>
-                <div class="selectDropdown">
-                  <div class="state-option option" data-value="Alabama">
-                    <span>al:</span>
-                    Alabama
-                  </div>
-                  <div class="state-option option" data-value="Alaska">
-                    <span>ak:</span>
-                    Alaska
-                  </div>
-                  <div class="state-option option" data-value="Arizona">
-                    <span>az:</span> Arizona
-                  </div>
-                </div>
-              </div>
-              <div class="btn-wrapper">
-                <button
-                  type="button"
-                  class="btn ok-btn"
-                  data-input_id="state_option_input"
-                >
-                  Ok
-                  <svg height="13" width="16">
-                    <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="form-fields">
-          <div>
-            <div class="form-header">
-              <div class="number-wrapper">
-                <span>4</span>
-                <svg height="10" width="11" class="shouldFlipIfRtl">
-                  <path
-                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
-                  ></path>
-                  <path d="M8 4v2H0V4z"></path>
-                </svg>
-              </div>
-              <p>How old are you?</p>
-            </div>
-            <div>
-              <div class="form-field">
-                <input
-                  type="number"
-                  class="input"
-                  id="age"
-                  min="0"
-                  placeholder="Type your answer here.."
-                />
-              </div>
-              <div class="btn-wrapper">
-                <button type="button" class="btn ok-btn" data-input_id="age">
-                  Ok
-                  <svg height="13" width="16">
-                    <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
-                    ></path>
-                  </svg>
-                </button>
-                <span>press <strong>Enter ↵</strong> </span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="form-fields">
-          <div>
-            <div class="form-header">
-              <div class="number-wrapper">
-                <span>4</span>
-                <svg height="10" width="11" class="shouldFlipIfRtl">
-                  <path
-                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
-                  ></path>
-                  <path d="M8 4v2H0V4z"></path>
-                </svg>
-              </div>
-              <p>Have you smoked regularly in the past 10 years?</p>
-            </div>
-            <div>
-              <div class="checkboxes" id="have_smoked">
-                <button type="button" data-value="Yes">
-                  <span class="char"><strong>Y</strong></span>
-                  <span>Yes</span>
-                  <svg height="13" width="16">
-                    <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
-                    ></path>
-                  </svg>
-                </button>
-                <button type="button" data-value="No">
-                  <span class="char"><strong>N</strong></span>
-                  <span>No</span>
-                  <svg height="13" width="16">
-                    <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="btn-wrapper">
-                <button
-                  type="button"
-                  class="btn ok-btn"
-                  data-input_id="have_smoked"
-                >
-                  Ok
-                  <svg height="13" width="16">
-                    <path
-                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="form-fields">
-          <div>
-            <div class="form-header">
-              <div class="number-wrapper">
-                <span>6</span>
-                <svg height="10" width="11" class="shouldFlipIfRtl">
-                  <path
-                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
-                  ></path>
-                  <path d="M8 4v2H0V4z"></path>
-                </svg>
-              </div>
-              <p>
-                Would you like to pay all upfront or monthly over one or more
-                years?
-              </p>
-            </div>
-            <div>
-              <div class="select">
-                <div class="select-btn-wrapper">
-                  <input
-                    type="text"
-                    class="input"
-                    id="select_paying_input"
-                    placeholder="Type or select an option"
-                  />
-                  <div class="select-paying selectBtn"></div>
-                </div>
-                <div class="selectDropdown">
-                  <div class="option paying-option" data-value="All upfront">
-                    All upfront
-                  </div>
-                  <div
-                    class="option paying-option"
-                    data-value="Monthly for 1 Year (12 Months)"
-                  >
-                    Monthly for 1 Year (12 Months)
-                  </div>
-                  <div
-                    class="option paying-option"
-                    data-value="Monthly for 3 Years (36 Months)"
-                  >
-                    Monthly for 3 Years (36 Months)
-                  </div>
-                </div>
-              </div>
-              <div class="submit-wrapper">
                 <div class="btn-wrapper">
-                  <button type="button" class="btn" id="submit-btn">
-                    Submit
+                  <button
+                    type="button"
+                    class="btn ok-btn"
+                    data-input_id="money_amount"
+                  >
+                    OK
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <span>press <strong>Enter ↵</strong> </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div>
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>3</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
+                    <path
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                    ></path>
+                    <path d="M8 4v2H0V4z"></path>
+                  </svg>
+                </div>
+                <p>What state do you live in?</p>
+              </div>
+              <div>
+                <div class="select">
+                  <div class="select-btn-wrapper">
+                    <input
+                      type="text"
+                      class="input"
+                      id="state_option_input"
+                      placeholder="Type or select an option"
+                    />
+                    <div class="select-state selectBtn"></div>
+                  </div>
+                  <div class="selectDropdown">
+                    <div class="state-option option" data-value="Alabama">
+                      <span>al:</span>
+                      Alabama
+                    </div>
+                    <div class="state-option option" data-value="Alaska">
+                      <span>ak:</span>
+                      Alaska
+                    </div>
+                    <div class="state-option option" data-value="Arizona">
+                      <span>az:</span> Arizona
+                    </div>
+                  </div>
+                </div>
+                <div class="btn-wrapper">
+                  <button
+                    type="button"
+                    class="btn ok-btn"
+                    data-input_id="state_option_input"
+                  >
+                    OK
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
                   </button>
                 </div>
-                <div class="submit-text">
-                  <p>Never submit passwords! -</p>
-                  <a href="#">Report abuse</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div>
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>4</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
+                    <path
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                    ></path>
+                    <path d="M8 4v2H0V4z"></path>
+                  </svg>
+                </div>
+                <p>How old are you?</p>
+              </div>
+              <div>
+                <div class="form-field">
+                  <input
+                    type="number"
+                    class="input"
+                    id="age"
+                    min="0"
+                    placeholder="Type your answer here.."
+                  />
+                </div>
+                <div class="btn-wrapper">
+                  <button type="button" class="btn ok-btn" data-input_id="age">
+                    OK
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <span>press <strong>Enter ↵</strong> </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div>
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>5</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
+                    <path
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                    ></path>
+                    <path d="M8 4v2H0V4z"></path>
+                  </svg>
+                </div>
+                <p>Have you smoked regularly in the past 10 years?</p>
+              </div>
+              <div>
+                <div class="checkboxes" id="have_smoked">
+                  <button type="button" data-value="Yes">
+                    <span class="char"><strong>Y</strong></span>
+                    <span>Yes</span>
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button type="button" data-value="No">
+                    <span class="char"><strong>N</strong></span>
+                    <span>No</span>
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <div class="btn-wrapper">
+                  <button
+                    type="button"
+                    class="btn ok-btn"
+                    data-input_id="have_smoked"
+                  >
+                    OK
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div>
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>6</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
+                    <path
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                    ></path>
+                    <path d="M8 4v2H0V4z"></path>
+                  </svg>
+                </div>
+                <p>
+                  Would you like to pay all upfront or monthly over one or more
+                  years?
+                </p>
+              </div>
+              <div>
+                <div class="select">
+                  <div class="select-btn-wrapper">
+                    <input
+                      type="text"
+                      class="input"
+                      id="select_paying_input"
+                      placeholder="Type or select an option"
+                    />
+                    <div class="select-paying selectBtn"></div>
+                  </div>
+                  <div class="selectDropdown">
+                    <div class="option paying-option" data-value="All upfront">
+                      All upfront
+                    </div>
+                    <div
+                      class="option paying-option"
+                      data-value="Monthly for 1 Year (12 Months)"
+                    >
+                      Monthly for 1 Year (12 Months)
+                    </div>
+                    <div
+                      class="option paying-option"
+                      data-value="Monthly for 3 Years (36 Months)"
+                    >
+                      Monthly for 3 Years (36 Months)
+                    </div>
+                  </div>
+                </div>
+                <div class="submit-wrapper">
+                  <div class="btn-wrapper">
+                    <button type="button" class="btn" id="submit-btn">
+                      Submit
+                    </button>
+                  </div>
+                  <div class="submit-text">
+                    <p>Never submit passwords! -</p>
+                    <a href="#">Report abuse</a>
+                  </div>
                 </div>
               </div>
             </div>
