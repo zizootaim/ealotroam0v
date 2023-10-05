@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: content-box;
+  color: rgb(75, 71, 83);
 }
 
 /* Global Styles */
@@ -11,10 +12,13 @@ body {
   position: relative;
 }
 
-label{
+label {
   line-height: 24px;
 }
 
+p {
+  letter-spacing: 0.1px;
+}
 /* Button */
 .btn-wrapper {
   display: flex;
@@ -48,6 +52,7 @@ label{
 .btn-wrapper span {
   font-size: 12px;
   margin-block: auto;
+  font-family: sans-serif;
 }
 
 /* Header */
@@ -76,11 +81,36 @@ main {
 }
 
 .main-content {
-  margin-block: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.main-content article {
+  box-sizing: inherit;
+  line-height: 24px;
+}
+
+.main-content article > div {
+  padding-inline: 40px;
+  text-align: start;
+}
+
+.main-content article > div > div {
+  width: 100%;
+  margin-block: 32px 96px;
+}
+
+#continue-btn {
+  line-height: 1;
+  height: 26px;
+  width: 84px;
+  font-size: 20px;
+  border-radius: 4px;
+  letter-spacing: -.1px;
 }
 
 .controllers {
@@ -142,15 +172,17 @@ main {
   padding-inline: 40px;
   max-width: 720px;
   width: 100%;
-  margin: 0 auto;
+  color: rgb(75, 71, 83);
 }
 
 .main-text::before {
   content: open-quote;
   position: absolute;
-  top: 0;
-  left: 18px;
-  font-size: 48px;
+  top: -9px;
+  left: 14px;
+  font-size: 42px;
+  line-height: 50px;
+  quotes: "“" "”";
 }
 
 .main-content .btn-wrapper {
@@ -206,7 +238,7 @@ main {
   position: relative;
 }
 
-.form-wrapper .form-header .number-wrapper{
+.form-wrapper .form-header .number-wrapper {
   position: absolute;
   left: -34px;
 }
@@ -388,7 +420,7 @@ main {
     left: 0;
   }
 
-  .form-fields:first-child > div.image-wrapper{
+  .form-fields:first-child > div.image-wrapper {
     height: 285px;
     overflow: visible;
   }
@@ -518,5 +550,19 @@ main {
 
   .form-fields .form-header + div {
     padding-left: 0;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .form-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-wrapper > div{
+    max-width: 720px;
+    margin-inline: auto;
   }
 }
