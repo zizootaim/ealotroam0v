@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ealotroam0v</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phone Input -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
+      integrity="sha512-DNeDhsl+FWnx5B1EQzsayHMyP6Xl/Mg+vcnFPXGNjUZrW28hQaa1+A4qL9M+AiOMmkAhKAWYHh1a+t6qxthzUw=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"
+      integrity="sha512-yye/u0ehQsrVrfSd6biT17t39Rg9kNc+vENcCXZuMz2a+LWFGvXUnYuWUW6pbfYj1jcBb/C39UZw2ciQvwDDvg=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      integrity="sha512-BNZ1x39RMH+UYylOW419beaGO0wqdSkO7pi1rYDYco9OL3uvXaC/GTqA5O4CVK2j4K9ZkoDNSSHVkEQKkgwdiw=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/dropdown.css" />
+  </head>
+  <body>
+    <div class="progress-bar">
+      <span></span>
+    </div>
+    <main>
+      <section class="main-content">
+        <div>
+          <p class="main-text">
+            This process is simple - 3 questions to understand a bit about who
+            you are and then we will be able to provide you with a customized
+            quote.
+          </p>
+          <div class="btn-wrapper">
+            <button id="continue-btn" class="btn">Continue</button>
+            <span>press <strong>Enter ↵</strong> </span>
+          </div>
+        </div>
+      </section>
+      <form class="form-content">
+        <article class="form-fields active">
+          <div class="image-wrapper">
+            <img src="./assets/land-img.jpeg" alt="land-img" />
+          </div>
+          <div class="form-wrapper">
+            <div>
+              <div class="form-header">
+                <div class="number-wrapper">
+                  <span>1</span>
+                  <svg height="10" width="11" class="shouldFlipIfRtl">
+                    <path
+                      d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                    ></path>
+                    <path d="M8 4v2H0V4z"></path>
+                  </svg>
+                </div>
+                <p>
+                  To start, please let us know how we can get in touch with you
+                  so you can receive your quote.*
+                </p>
+              </div>
+              <div class="form">
+                <div class="form-field">
+                  <label for="first_name">First name *</label>
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="Jane"
+                    required
+                    id="first_name"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="last_name">Last name *</label>
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="Smith"
+                    required
+                    id="last_name"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="phone">Phone number</label>
+                  <input
+                    name="phone"
+                    type="text"
+                    class="form-control input mb-2 inptFielsd"
+                    id="phone"
+                    placeholder="(201) 555-0123"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="email">Email *</label>
+                  <input
+                    type="email"
+                    class="input"
+                    placeholder="name@example.com"
+                    required
+                    id="email"
+                  />
+                </div>
+                <div class="btn-wrapper">
+                  <button
+                    type="button"
+                    class="btn ok-btn"
+                    data-input_id="user_data"
+                  >
+                    OK
+                    <svg height="13" width="16">
+                      <path
+                        d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <span>press <strong>Enter ↵</strong> </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div class="form-header">
+              <div class="number-wrapper">
+                <span>2</span>
+                <svg height="10" width="11" class="shouldFlipIfRtl">
+                  <path
+                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                  ></path>
+                  <path d="M8 4v2H0V4z"></path>
+                </svg>
+              </div>
+              <p>
+                What amount of money would you like to have for your end-of-life
+                preparations? This can be any amount you want and the funds will
+                go directly to whoever you wish upon your death.This question is
+                required.*
+              </p>
+            </div>
+            <div>
+              <div class="form-field">
+                <input
+                  type="number"
+                  class="input"
+                  id="money_amount"
+                  min="0"
+                  required
+                  placeholder="Type your answer here..."
+                />
+              </div>
+              <div class="btn-wrapper">
+                <button
+                  type="button"
+                  class="btn ok-btn"
+                  data-input_id="money_amount"
+                >
+                  Ok
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+                <span>press <strong>Enter ↵</strong> </span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div class="form-header">
+              <div class="number-wrapper">
+                <span>3</span>
+                <svg height="10" width="11" class="shouldFlipIfRtl">
+                  <path
+                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                  ></path>
+                  <path d="M8 4v2H0V4z"></path>
+                </svg>
+              </div>
+              <p>What state do you live in?</p>
+            </div>
+            <div>
+              <div class="select">
+                <div class="select-btn-wrapper">
+                  <input
+                    type="text"
+                    class="input"
+                    id="state_option_input"
+                    placeholder="Type or select an option"
+                  />
+                  <div class="select-state selectBtn"></div>
+                </div>
+                <div class="selectDropdown">
+                  <div class="state-option option" data-value="Alabama">
+                    <span>al:</span>
+                    Alabama
+                  </div>
+                  <div class="state-option option" data-value="Alaska">
+                    <span>ak:</span>
+                    Alaska
+                  </div>
+                  <div class="state-option option" data-value="Arizona">
+                    <span>az:</span> Arizona
+                  </div>
+                </div>
+              </div>
+              <div class="btn-wrapper">
+                <button
+                  type="button"
+                  class="btn ok-btn"
+                  data-input_id="state_option_input"
+                >
+                  Ok
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div class="form-header">
+              <div class="number-wrapper">
+                <span>4</span>
+                <svg height="10" width="11" class="shouldFlipIfRtl">
+                  <path
+                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                  ></path>
+                  <path d="M8 4v2H0V4z"></path>
+                </svg>
+              </div>
+              <p>How old are you?</p>
+            </div>
+            <div>
+              <div class="form-field">
+                <input
+                  type="number"
+                  class="input"
+                  id="age"
+                  min="0"
+                  placeholder="Type your answer here.."
+                />
+              </div>
+              <div class="btn-wrapper">
+                <button type="button" class="btn ok-btn" data-input_id="age">
+                  Ok
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+                <span>press <strong>Enter ↵</strong> </span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div class="form-header">
+              <div class="number-wrapper">
+                <span>4</span>
+                <svg height="10" width="11" class="shouldFlipIfRtl">
+                  <path
+                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                  ></path>
+                  <path d="M8 4v2H0V4z"></path>
+                </svg>
+              </div>
+              <p>Have you smoked regularly in the past 10 years?</p>
+            </div>
+            <div>
+              <div class="checkboxes" id="have_smoked">
+                <button type="button" data-value="Yes">
+                  <span class="char"><strong>Y</strong></span>
+                  <span>Yes</span>
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+                <button type="button" data-value="No">
+                  <span class="char"><strong>N</strong></span>
+                  <span>No</span>
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="btn-wrapper">
+                <button
+                  type="button"
+                  class="btn ok-btn"
+                  data-input_id="have_smoked"
+                >
+                  Ok
+                  <svg height="13" width="16">
+                    <path
+                      d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="form-fields">
+          <div>
+            <div class="form-header">
+              <div class="number-wrapper">
+                <span>6</span>
+                <svg height="10" width="11" class="shouldFlipIfRtl">
+                  <path
+                    d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"
+                  ></path>
+                  <path d="M8 4v2H0V4z"></path>
+                </svg>
+              </div>
+              <p>
+                Would you like to pay all upfront or monthly over one or more
+                years?
+              </p>
+            </div>
+            <div>
+              <div class="select">
+                <div class="select-btn-wrapper">
+                  <input
+                    type="text"
+                    class="input"
+                    id="select_paying_input"
+                    placeholder="Type or select an option"
+                  />
+                  <div class="select-paying selectBtn"></div>
+                </div>
+                <div class="selectDropdown">
+                  <div class="option paying-option" data-value="All upfront">
+                    All upfront
+                  </div>
+                  <div
+                    class="option paying-option"
+                    data-value="Monthly for 1 Year (12 Months)"
+                  >
+                    Monthly for 1 Year (12 Months)
+                  </div>
+                  <div
+                    class="option paying-option"
+                    data-value="Monthly for 3 Years (36 Months)"
+                  >
+                    Monthly for 3 Years (36 Months)
+                  </div>
+                </div>
+              </div>
+              <div class="submit-wrapper">
+                <div class="btn-wrapper">
+                  <button type="button" class="btn" id="submit-btn">
+                    Submit
+                  </button>
+                </div>
+                <div class="submit-text">
+                  <p>Never submit passwords! -</p>
+                  <a href="#">Report abuse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </form>
+    </main>
+    <div class="controllers">
+      <button type="button" class="scroll-btn disabled">
+        <svg height="9" width="14">
+          <path
+            d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"
+          ></path>
+        </svg>
+      </button>
+      <button type="button" class="scroll-btn">
+        <svg height="9" width="14">
+          <path
+            d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </body>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/dropdown.js"></script>
+</html>
