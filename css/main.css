@@ -73,7 +73,7 @@ label {
 
 /* Main Content */
 main {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -206,7 +206,7 @@ main {
 .form-fields {
   display: flex;
   flex-direction: row-reverse;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -296,7 +296,7 @@ main {
 }
 
 .form-wrapper {
-  max-height: 100vh;
+  max-height: 100dvh;
   overflow-y: auto;
 }
 

@@ -249,29 +249,29 @@ window.addEventListener("keydown", (e) => {
 // }
 
 // Adjust the height on mobile devices
-function setMobileHeight() {
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+// function setMobileHeight() {
+//   const isMobile =
+//     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+//       navigator.userAgent
+//     );
 
-  if (isMobile) {
-    const outerHeight = window.outerHeight || window.screen.availHeight;
-    const innerHeight = window.innerHeight;
+//   if (isMobile) {
+//     const outerHeight = window.outerHeight || window.screen.availHeight;
+//     const innerHeight = window.innerHeight;
 
-    const addressBarHeight = outerHeight - innerHeight;
+//     const addressBarHeight = outerHeight - innerHeight;
 
-    const realViewportHeight = innerHeight - addressBarHeight;
-    document.querySelector("main").style.height = `${realViewportHeight}px`;
-    document.querySelector(
-      ".form-wrapper"
-    ).style.height = `${realViewportHeight}px`;
-    document.querySelector(
-      ".form-fields"
-    ).style.height = `${realViewportHeight}px`;
-  }
-}
+//     const realViewportHeight = innerHeight - addressBarHeight;
+//     document.querySelector("main").style.height = `${realViewportHeight}px`;
+//     document.querySelector(
+//       ".form-wrapper"
+//     ).style.height = `${realViewportHeight}px`;
+//     document.querySelector(
+//       ".form-fields"
+//     ).style.height = `${realViewportHeight}px`;
+//   }
+// }
 
-// Call the function on window resize
-window.addEventListener("resize", setMobileHeight);
-setMobileHeight();
+// // Call the function on window resize
+// window.addEventListener("resize", setMobileHeight);
+// setMobileHeight();
