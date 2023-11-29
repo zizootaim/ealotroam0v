@@ -274,3 +274,4 @@ function setMobileHeight() {
 
 // Call the function on window resize
 window.addEventListener("resize", setMobileHeight);
+setMobileHeight();
