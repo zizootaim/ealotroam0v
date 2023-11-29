@@ -249,17 +249,17 @@ window.addEventListener("keydown", (e) => {
 // }
 
 // Adjust the height on mobile devices
-function setMobileHeight() {
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+// function setMobileHeight() {
+//   const isMobile =
+//     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+//       navigator.userAgent
+//     );
 
-  if (isMobile) {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
-}
+//   if (isMobile) {
+//     const vh = window.innerHeight * 0.01;
+//     document.documentElement.style.setProperty("--vh", `${vh}px`);
+//   }
+// }
 
-// Call the function on window resize
-window.addEventListener("resize", setMobileHeight);
+// // Call the function on window resize
+// window.addEventListener("resize", setMobileHeight);

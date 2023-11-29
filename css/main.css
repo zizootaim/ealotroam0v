@@ -556,6 +556,15 @@ main {
   .form-fields .form-header + div {
     padding-left: 0;
   }
+  main {
+    height: 90vh;
+  }
+  .form-fields {
+    height: 90vh;
+  }
+  .form-wrapper {
+    max-height: 90vh;
+  }
 }
 
 @media screen and (min-width: 1440px) {
