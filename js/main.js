@@ -220,30 +220,46 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-if (window.innerWidth < 550) {
-  function getRealViewportHeight() {
-    const doc = document.documentElement;
-    const vh = window.innerHeight || doc.clientHeight;
+// if (window.innerWidth < 550) {
+//   function getRealViewportHeight() {
+//     const doc = document.documentElement;
+//     const vh = window.innerHeight || doc.clientHeight;
 
-    // Mobile browsers often include the address bar height in the initial
-    // window.innerHeight. We can adjust it by checking the orientation.
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-    const chromeHeight = isPortrait ? screen.height - vh : screen.width - vh;
+//     // Mobile browsers often include the address bar height in the initial
+//     // window.innerHeight. We can adjust it by checking the orientation.
+//     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+//     const chromeHeight = isPortrait ? screen.height - vh : screen.width - vh;
 
-    // Calculate the adjusted viewport height
-    const realViewportHeight = vh + chromeHeight;
+//     // Calculate the adjusted viewport height
+//     const realViewportHeight = vh + chromeHeight;
 
-    document.querySelector("main").style.height = `${realViewportHeight}px`;
-    document.querySelector(
-      ".form-wrapper"
-    ).style.height = `${realViewportHeight}px`;
-    document.querySelector(
-      ".form-fields"
-    ).style.height = `${realViewportHeight}px`;
+//     document.querySelector("main").style.height = `${realViewportHeight}px`;
+//     document.querySelector(
+//       ".form-wrapper"
+//     ).style.height = `${realViewportHeight}px`;
+//     document.querySelector(
+//       ".form-fields"
+//     ).style.height = `${realViewportHeight}px`;
+//   }
+
+//   window.addEventListener("resize", () => {
+//     getRealViewportHeight();
+//   });
+//   getRealViewportHeight();
+// }
+
+// Adjust the height on mobile devices
+function setMobileHeight() {
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+  if (isMobile) {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
-
-  window.addEventListener("resize", () => {
-    getRealViewportHeight();
-  });
-  getRealViewportHeight();
 }
+
+// Call the function on window resize
+window.addEventListener("resize", setMobileHeight);

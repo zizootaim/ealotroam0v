@@ -5,12 +5,12 @@
   color: rgb(75, 71, 83);
 }
 
-
 /* Global Styles */
 
 body {
   font-family: "Figtree", sans-serif;
   position: relative;
+  overflow: hidden;
 }
 
 label {
@@ -327,7 +327,7 @@ main {
   transition: background-color 1e8s ease 0s, box-shadow 0.1s ease-out 0s;
 }
 
-.form .input{
+.form .input {
   font-size: 24px;
 }
 
