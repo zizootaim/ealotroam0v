@@ -557,13 +557,13 @@ main {
     padding-left: 0;
   }
   main {
-    height: 90vh;
+    overflow: auto;
   }
   .form-fields {
-    height: 90vh;
+    overflow: auto;
   }
   .form-wrapper {
-    max-height: 90vh;
+    overflow: auto;
   }
 }
 
