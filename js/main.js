@@ -249,17 +249,28 @@ window.addEventListener("keydown", (e) => {
 // }
 
 // Adjust the height on mobile devices
-// function setMobileHeight() {
-//   const isMobile =
-//     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-//       navigator.userAgent
-//     );
+function setMobileHeight() {
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
-//   if (isMobile) {
-//     const vh = window.innerHeight * 0.01;
-//     document.documentElement.style.setProperty("--vh", `${vh}px`);
-//   }
-// }
+  if (isMobile) {
+    const outerHeight = window.outerHeight || window.screen.availHeight;
+    const innerHeight = window.innerHeight;
 
-// // Call the function on window resize
-// window.addEventListener("resize", setMobileHeight);
+    const addressBarHeight = outerHeight - innerHeight;
+
+    const realViewportHeight = innerHeight - addressBarHeight;
+    document.querySelector("main").style.height = `${realViewportHeight}px`;
+    document.querySelector(
+      ".form-wrapper"
+    ).style.height = `${realViewportHeight}px`;
+    document.querySelector(
+      ".form-fields"
+    ).style.height = `${realViewportHeight}px`;
+  }
+}
+
+// Call the function on window resize
+window.addEventListener("resize", setMobileHeight);

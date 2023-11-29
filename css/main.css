@@ -556,15 +556,6 @@ main {
   .form-fields .form-header + div {
     padding-left: 0;
   }
-  main {
-    overflow: auto;
-  }
-  .form-fields {
-    overflow: auto;
-  }
-  .form-wrapper {
-    overflow: auto;
-  }
 }
 
 @media screen and (min-width: 1440px) {
