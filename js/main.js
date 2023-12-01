@@ -296,6 +296,8 @@ const dateContainer = document.querySelector(".date-container");
 
 const triggerCalendar = () => {
   dateContainer.classList.toggle("focus");
+  console.log(dateInput);
+  dateInput.focus();
   dateInput.showPicker();
 };
 
@@ -320,7 +322,7 @@ dateInput.addEventListener("change", (e) => {
   dateTrigger.setAttribute("value", americanDateFormat);
 });
 
-// document.querySelector("main").scrollTo({
-//     top: window.innerHeight * 2,
-//     behavior: "smooth",
-// });
+document.querySelector("main").scrollTo({
+  top: window.innerHeight * 2,
+  behavior: "smooth",
+});
