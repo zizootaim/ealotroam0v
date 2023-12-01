@@ -43,7 +43,8 @@ const scrollToSection = (direction) => {
   } else {
     if (currentPage < 3) currentPage++;
   }
-  const targetScrollPosition = currentPage * window.innerHeight;
+  // const targetScrollPosition = currentPage * window.innerHeight;
+  const targetSection = document.getElementById(`sec-${currentPage}`);
 
   if (currentPage) {
     let firstInput = "";
@@ -76,10 +77,13 @@ const scrollToSection = (direction) => {
     });
   }
 
-  document.querySelector("main").scrollTo({
-    top: targetScrollPosition,
-    behavior: "smooth",
-  });
+  // document.querySelector("main").scrollTo({
+  //   top: targetScrollPosition,
+  //   behavior: "smooth",
+  // });
+  if (targetSection) {
+    targetSection.scrollIntoView({ behavior: "smooth" });
+  }
 };
 
 continueBtn.addEventListener("click", () => {
