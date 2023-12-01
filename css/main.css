@@ -73,7 +73,7 @@ label {
 
 /* Main Content */
 main {
-  height: 100svh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -190,13 +190,6 @@ main {
   margin-top: 32px;
 }
 
-/* Media Query */
-@media screen and (max-width: 720px) {
-  .main-text {
-    width: auto;
-  }
-}
-
 /* Form Content */
 .form-content {
   display: flex;
@@ -206,7 +199,7 @@ main {
 .form-fields {
   display: flex;
   flex-direction: row-reverse;
-  height: 100svh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -272,7 +265,8 @@ main {
 }
 
 .form-fields:first-child > div {
-  max-width: unset;
+  max-width: 720px;
+  margin-inline: auto;
   height: auto;
 }
 
@@ -296,7 +290,7 @@ main {
 }
 
 .form-wrapper {
-  max-height: 100svh;
+  max-height: 100dvh;
   overflow-y: auto;
 }
 
@@ -326,6 +320,49 @@ main {
   transition: background-color 1e8s ease 0s, box-shadow 0.1s ease-out 0s;
 }
 
+.input.pointer {
+  cursor: pointer;
+}
+
+.form-field.date-container {
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: rgba(75, 71, 83, 0.3) 0px 1px;
+  position: relative;
+  transition: box-shadow 0.1s ease-out 0s;
+}
+
+.form-field.money-field {
+  flex-direction: row;
+  align-items: center;
+}
+
+.money-field span {
+  font-size: 30px;
+  padding-bottom: 8px;
+}
+
+#dob {
+  opacity: 0;
+  visibility: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.date-container .input {
+  border: none;
+  box-sizing: border-box;
+  outline: 0;
+  position: relative;
+  width: 100%;
+  box-shadow: none;
+}
+
 .form .input {
   font-size: 24px;
 }
@@ -336,7 +373,8 @@ main {
   font-family: "Figtree", sans-serif;
 }
 
-.input:focus {
+.input:not(#dob-trigger):focus,
+.date-container.focus {
   box-shadow: rgb(75, 71, 83) 0px 2px;
 }
 
@@ -401,11 +439,11 @@ main {
 
   .form-fields {
     flex-direction: column;
-    padding-inline: 16px;
     overflow: auto;
   }
 
-  .form-fields:first-child {
+  .form-fields:first-child,
+  .form-fields:not(.active) {
     padding-inline: 0;
   }
 
@@ -558,6 +596,8 @@ main {
   }
 }
 
+/* Media Query */
+
 @media screen and (min-width: 1440px) {
   .form-wrapper {
     display: flex;
@@ -568,5 +608,144 @@ main {
   .form-wrapper > div {
     max-width: 720px;
     margin-inline: auto;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .main-text {
+    width: auto;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .form-fields:first-child > div {
+    padding-inline: 44px;
+    width: auto;
+  }
+}
+
+.address-fields .row:nth-child(2) {
+  padding-left: 16px;
+  gap: 20px;
+}
+
+.address-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.address-inputs.first-row {
+  grid-template-columns: 75% 1fr;
+}
+
+/* Mobile Styles */
+
+@media screen and (max-width: 768px) {
+  .press-enter {
+    display: none;
+  }
+
+  .main-text {
+    width: auto;
+  }
+
+  .main-content article > div > div,
+  .form-fields:not(.active) > div > div {
+    width: auto;
+  }
+
+  label {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  .input,
+  .money-field span {
+    font-size: 20px;
+  }
+
+  .money-field span {
+    padding-bottom: 10px;
+  }
+
+  .form-fields > div:first-child {
+    max-height: 85vh;
+    overflow: auto;
+    padding-inline: 76px 54px;
+    width: auto;
+    padding-bottom: 10px;
+  }
+
+  .form-fields > div {
+    width: auto;
+  }
+
+  .address-fields .row,
+  .address-fields .row:nth-child(2) {
+    margin-inline: 0;
+    padding-left: 0;
+  }
+
+  .main-content article > div > div,
+  .form-fields:not(.active) > div > div {
+    margin-block: 0;
+  }
+
+  .address-fields .col-sm-12,
+  .address-fields .col-12 {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-text {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .main-text::before {
+    left: 18px;
+  }
+
+  .main-content article > div,
+  .form-fields:not(.active) {
+    padding-inline: 0;
+  }
+
+  .btn,
+  #continue-btn {
+    font-size: 16px;
+  }
+
+  #continue-btn {
+    width: auto;
+  }
+
+  .number-wrapper {
+    font-size: 14px;
+    padding-top: 2px;
+    left: -32px;
+  }
+
+  .address-inputs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .address-inputs > div:last-child {
+    grid-column: -1 / 1;
+  }
+
+  .address-inputs.first-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-fields > div:first-child {
+    padding-inline: 44px;
+  }
+
+  .address-inputs {
+    grid-template-columns: 1fr;
   }
 }

@@ -44,6 +44,33 @@ const scrollToSection = (direction) => {
   }
   const targetScrollPosition = currentPage * window.innerHeight;
 
+  if (currentPage) {
+    let firstInput = "";
+    scrollBtns[1].classList.remove("disabled");
+    switch (currentPage) {
+      case 1:
+        {
+          firstInput = document.getElementById("first_name");
+        }
+        break;
+      case 2: {
+        firstInput = document.getElementById("money_amount");
+        break;
+      }
+      case 3: {
+        firstInput = document.getElementById("state_option_input");
+        scrollBtns[1].classList.add("disabled");
+        break;
+      }
+    }
+
+    if (firstInput) {
+      firstInput.focus({
+        preventScroll: true,
+      });
+    }
+  }
+
   document.querySelector("main").scrollTo({
     top: targetScrollPosition,
     behavior: "smooth",
@@ -220,58 +247,49 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// if (window.innerWidth < 550) {
-//   function getRealViewportHeight() {
-//     const doc = document.documentElement;
-//     const vh = window.innerHeight || doc.clientHeight;
+const dateInput = document.getElementById("dob");
+const calendarBtn = document.getElementById("dob-calendar");
+const dateTrigger = document.getElementById("dob-trigger");
+const dateContainer = document.querySelector(".date-container");
 
-//     // Mobile browsers often include the address bar height in the initial
-//     // window.innerHeight. We can adjust it by checking the orientation.
-//     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-//     const chromeHeight = isPortrait ? screen.height - vh : screen.width - vh;
+const triggerCalendar = () => {
+  dateContainer.classList.toggle("focus");
+  dateInput.showPicker();
+};
 
-//     // Calculate the adjusted viewport height
-//     const realViewportHeight = vh + chromeHeight;
+calendarBtn.addEventListener("click", () => {
+  triggerCalendar();
+});
 
-//     document.querySelector("main").style.height = `${realViewportHeight}px`;
-//     document.querySelector(
-//       ".form-wrapper"
-//     ).style.height = `${realViewportHeight}px`;
-//     document.querySelector(
-//       ".form-fields"
-//     ).style.height = `${realViewportHeight}px`;
-//   }
+dateTrigger.addEventListener("click", () => {
+  triggerCalendar();
+});
 
-//   window.addEventListener("resize", () => {
-//     getRealViewportHeight();
-//   });
-//   getRealViewportHeight();
-// }
+dateInput.addEventListener("change", (e) => {
+  const selectedDate = new Date(e.target.value);
 
-// Adjust the height on mobile devices
-// function setMobileHeight() {
-//   const isMobile =
-//     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-//       navigator.userAgent
-//     );
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
 
-//   if (isMobile) {
-//     const outerHeight = window.outerHeight || window.screen.availHeight;
-//     const innerHeight = window.innerHeight;
+  const americanDateFormat = selectedDate.toLocaleDateString("en-US", options);
+  dateTrigger.setAttribute("value", americanDateFormat);
+});
 
-//     const addressBarHeight = outerHeight - innerHeight;
+// document.querySelector("main").scrollTo({
+//   top: window.innerHeight * 1,
+//   behavior: "smooth",
+// });
 
-//     const realViewportHeight = innerHeight - addressBarHeight;
-//     document.querySelector("main").style.height = `${realViewportHeight}px`;
-//     document.querySelector(
-//       ".form-wrapper"
-//     ).style.height = `${realViewportHeight}px`;
-//     document.querySelector(
-//       ".form-fields"
-//     ).style.height = `${realViewportHeight}px`;
-//   }
-// }
+const selectors = [".form-wrapper", ".form-fields", "main"];
 
-// // Call the function on window resize
-// window.addEventListener("resize", setMobileHeight);
-// setMobileHeight();
+selectors.forEach((selector) => {
+  const element = document.querySelector(selector);
+  const styles = window.getComputedStyle(element);
+  const height = styles.getPropertyValue("height");
+  element.setAttribute("height", window.innerHeight);
+  console.log(height);
+  console.log(window.innerHeight);
+});
