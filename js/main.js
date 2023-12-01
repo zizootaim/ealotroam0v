@@ -322,7 +322,7 @@ dateInput.addEventListener("change", (e) => {
   dateTrigger.setAttribute("value", americanDateFormat);
 });
 
-document.querySelector("main").scrollTo({
-  top: window.innerHeight * 2,
-  behavior: "smooth",
-});
+// document.querySelector("main").scrollTo({
+//   top: window.innerHeight * 2,
+//   behavior: "smooth",
+// });
