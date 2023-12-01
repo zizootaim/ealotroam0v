@@ -1,3 +1,4 @@
+const NUM_OF_PAGES = 4;
 /* Phone Number Input Logic */
 const input = document.querySelector("#phone");
 window.intlTelInput(input, {
@@ -24,7 +25,7 @@ const updateUi = (direction) => {
   } else {
     const currentScrollPosition = document.querySelector("main").scrollTop;
     const nextScroll = currentScrollPosition + 2 * window.innerHeight;
-    const totalHeight = 6 * window.innerHeight;
+    const totalHeight = NUM_OF_PAGES * window.innerHeight;
 
     scrollBtns[0].classList.remove("disabled");
     if (nextScroll > totalHeight) {
@@ -40,7 +41,7 @@ const scrollToSection = (direction) => {
   if (direction === "up") {
     if (currentPage > 0) currentPage--;
   } else {
-    if (currentPage < 6) currentPage++;
+    if (currentPage < 3) currentPage++;
   }
   const targetScrollPosition = currentPage * window.innerHeight;
 
@@ -50,25 +51,29 @@ const scrollToSection = (direction) => {
     switch (currentPage) {
       case 1:
         {
+          if (!validateForm(formInputs, true)) {
+            scrollBtns[1].classList.add("disabled");
+          } else {
+            scrollBtns[1].classList.remove("disabled");
+          }
+
           firstInput = document.getElementById("first_name");
         }
         break;
       case 2: {
-        firstInput = document.getElementById("money_amount");
+        firstInput = document.getElementById("locationSearch");
         break;
       }
       case 3: {
-        firstInput = document.getElementById("state_option_input");
+        firstInput = document.getElementById("money_amount");
         scrollBtns[1].classList.add("disabled");
         break;
       }
     }
 
-    if (firstInput) {
-      firstInput.focus({
-        preventScroll: true,
-      });
-    }
+    firstInput.focus({
+      preventScroll: true,
+    });
   }
 
   document.querySelector("main").scrollTo({
@@ -96,6 +101,7 @@ scrollBtns.forEach((scrollBtn, index) => {
 });
 
 /* Form Logic */
+
 const formInputs = {
   first_name: {
     required: true,
@@ -110,18 +116,6 @@ const formInputs = {
     required: true,
   },
   money_amount: {
-    required: true,
-  },
-  state_option_input: {
-    required: false,
-  },
-  age: {
-    required: false,
-  },
-  have_smoked: {
-    required: false,
-  },
-  select_paying_input: {
     required: false,
   },
 };
@@ -152,7 +146,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
-const validateForm = (formInputs) => {
+const validateForm = (formInputs, scroll) => {
   let isValid = true;
   Object.keys(formInputs).forEach((id) => {
     const required = formInputs[id].required;
@@ -164,7 +158,7 @@ const validateForm = (formInputs) => {
       const isErrorExisted = !!inputField.children[errorIndex];
 
       if (!input.value || !isValidEmail) {
-        if (!isErrorExisted) {
+        if (!isErrorExisted && !scroll) {
           createErrorEl(inputField);
         }
         isValid = false;
@@ -185,8 +179,7 @@ okBtns.forEach((btn) => {
     switch (inputID) {
       case "user_data":
         {
-          const { money_amount, ...formInputsToValidate } = formInputs;
-          if (!validateForm(formInputsToValidate)) {
+          if (!validateForm(formInputs)) {
             return;
           }
           fillProgressBar();
@@ -213,12 +206,6 @@ okBtns.forEach((btn) => {
   });
 });
 
-const form = document.querySelector("form");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
-
 /* Checkboxes Logic */
 const checkBtns = document.querySelectorAll(".checkboxes button");
 
@@ -235,7 +222,7 @@ checkBtns.forEach((btn) => {
 window.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
-    if (currentPage && currentPage < 6) {
+    if (currentPage && currentPage < 4) {
       const currentSection = formWrappers[currentPage - 1];
       if (currentSection) {
         const okBtn = currentSection.querySelector(".ok-btn");
@@ -244,6 +231,61 @@ window.addEventListener("keydown", (e) => {
     } else {
       continueBtn.click();
     }
+  }
+});
+
+const formatPhoneNumber = (number) => {
+  number = number.replace(/\D/g, "");
+
+  if (number.length < 3) {
+    return "(" + number;
+  } else if (number.length < 6) {
+    return "(" + number.slice(0, 3) + ") " + number.slice(3);
+  } else {
+    return (
+      "(" +
+      number.slice(0, 3) +
+      ") " +
+      number.slice(3, 6) +
+      "-" +
+      number.slice(6, 10)
+    );
+  }
+};
+
+/* Behavior of Required Inputs and Phone Number */
+
+Object.keys(formInputs).forEach((key) => {
+  if (key !== "money_amount" && formInputs[key].required) {
+    const inputs = document.querySelectorAll(".input[required]");
+    document.getElementById(key).addEventListener("input", () => {
+      let numOfValidInputs = 0;
+      inputs.forEach((input) => {
+        const id = input.getAttribute("id");
+        if (input.value) {
+          if (id === "email") {
+            if (validateEmail(input.value)) {
+              numOfValidInputs++;
+            }
+          } else numOfValidInputs++;
+        }
+      });
+      if (numOfValidInputs === inputs.length) {
+        scrollBtns[1].classList.remove("disabled");
+      } else {
+        scrollBtns[1].classList.add("disabled");
+      }
+    });
+  } else if (key === "phone") {
+    document.getElementById(key).addEventListener("input", (e) => {
+      const value = e.target.value;
+      const selectedCode = document.querySelector(
+        ".iti__selected-dial-code"
+      ).textContent;
+      if (selectedCode === "+1") {
+        e.target.value = formatPhoneNumber(value);
+      }
+    });
   }
 });
 
@@ -279,17 +321,6 @@ dateInput.addEventListener("change", (e) => {
 });
 
 // document.querySelector("main").scrollTo({
-//   top: window.innerHeight * 1,
-//   behavior: "smooth",
+//     top: window.innerHeight * 2,
+//     behavior: "smooth",
 // });
-
-const selectors = [".form-wrapper", ".form-fields", "main"];
-
-selectors.forEach((selector) => {
-  const element = document.querySelector(selector);
-  const styles = window.getComputedStyle(element);
-  const height = styles.getPropertyValue("height");
-  element.setAttribute("height", window.innerHeight);
-  console.log(height);
-  console.log(window.innerHeight);
-});
