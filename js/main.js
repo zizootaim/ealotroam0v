@@ -9,7 +9,8 @@ window.intlTelInput(input, {
 });
 [];
 
-/* Scroll Logic */
+/* Scroll Logic and Form */
+
 const continueBtn = document.getElementById("continue-btn");
 const scrollBtns = document.querySelectorAll(".scroll-btn");
 const formWrappers = document.querySelectorAll(".form-fields");
@@ -37,6 +38,77 @@ const updateUi = (direction) => {
   }
 };
 
+const formInputs = {
+  first_name: {
+    required: true,
+  },
+  last_name: {
+    required: true,
+  },
+  phone: {
+    required: false,
+  },
+  email: {
+    required: true,
+  },
+  money_amount: {
+    required: false,
+  },
+  locationSearch: {
+    required: true,
+  },
+  gender_option_input: {
+    required: true,
+  },
+  dob_trigger: {
+    required: true,
+  },
+};
+
+const validateEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return emailRegex.test(email);
+};
+
+const validateForm = (inputs, canShowError) => {
+  let isValid = true;
+  Object.values(inputs).forEach((id) => {
+    const required = formInputs[id].required;
+    if (required) {
+      const input = document.getElementById(id);
+      let inputField = input.parentElement;
+      const changeInputParent =
+        inputField.className.includes("select") ||
+        inputField.className.includes("date");
+      if (changeInputParent) {
+        inputField = inputField.parentElement.parentElement;
+      }
+      const isValidEmail = id === "email" ? validateEmail(input.value) : true;
+      const isErrorExisted = !!inputField.querySelector(".error");
+      if (!input.value || !isValidEmail) {
+        if (!isErrorExisted && canShowError) {
+          createErrorEl(inputField, changeInputParent);
+        }
+        isValid = false;
+      } else if (isErrorExisted) {
+        const errorEl = inputField.querySelector(".error");
+        if (errorEl) inputField.removeChild(errorEl);
+      }
+    }
+  });
+
+  if (!isValid) {
+    scrollBtns[1].classList.add("disabled");
+  } else {
+    scrollBtns[1].classList.remove("disabled");
+  }
+
+  return isValid;
+};
+
+const userDataInputs = ["first_name", "last_name", "email"];
+const addressInputs = ["locationSearch", "gender_option_input", "dob_trigger"];
+
 const scrollToSection = (direction) => {
   if (direction === "up") {
     if (currentPage > 0) currentPage--;
@@ -52,16 +124,14 @@ const scrollToSection = (direction) => {
     switch (currentPage) {
       case 1:
         {
-          if (!validateForm(formInputs, true)) {
-            scrollBtns[1].classList.add("disabled");
-          } else {
-            scrollBtns[1].classList.remove("disabled");
-          }
+          validateForm(userDataInputs);
 
           firstInput = document.getElementById("first_name");
         }
         break;
       case 2: {
+        validateForm(addressInputs);
+
         firstInput = document.getElementById("locationSearch");
         break;
       }
@@ -104,36 +174,19 @@ scrollBtns.forEach((scrollBtn, index) => {
   });
 });
 
-/* Form Logic */
-
-const formInputs = {
-  first_name: {
-    required: true,
-  },
-  last_name: {
-    required: true,
-  },
-  phone: {
-    required: false,
-  },
-  email: {
-    required: true,
-  },
-  money_amount: {
-    required: false,
-  },
-};
-
 const fillProgressBar = () => {
   const progressBar = document.querySelector(".progress-bar");
   const filledWidth = progressBar.children[0].clientWidth;
-  const calculatedWidth = filledWidth + progressBar.clientWidth / 5;
+  const calculatedWidth = filledWidth + progressBar.clientWidth / 3;
   progressBar.children[0].setAttribute("style", `width: ${calculatedWidth}px;`);
 };
 
-const createErrorEl = (inputField) => {
+const createErrorEl = (inputField, addMarginTop) => {
   const errorEl = document.createElement("div");
   errorEl.classList.add("error");
+  if (addMarginTop) {
+    errorEl.classList.add("mt-10");
+  }
   errorEl.innerHTML = `<svg height="24" viewBox="0 0 24 24" width="24">
       <path
         clip-rule="evenodd"
@@ -145,36 +198,6 @@ const createErrorEl = (inputField) => {
   inputField.appendChild(errorEl);
 };
 
-const validateEmail = (email) => {
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  return emailRegex.test(email);
-};
-
-const validateForm = (formInputs, scroll) => {
-  let isValid = true;
-  Object.keys(formInputs).forEach((id) => {
-    const required = formInputs[id].required;
-    if (required) {
-      const input = document.getElementById(id);
-      const inputField = input.parentElement;
-      const isValidEmail = id === "email" ? validateEmail(input.value) : true;
-      const errorIndex = id !== "money_amount" ? 2 : 1;
-      const isErrorExisted = !!inputField.children[errorIndex];
-
-      if (!input.value || !isValidEmail) {
-        if (!isErrorExisted && !scroll) {
-          createErrorEl(inputField);
-        }
-        isValid = false;
-      } else if (isErrorExisted) {
-        const errorEl = input.parentElement.querySelector(".error");
-        input.parentElement.removeChild(errorEl);
-      }
-    }
-  });
-  return isValid;
-};
-
 const okBtns = document.querySelectorAll(".ok-btn");
 
 okBtns.forEach((btn) => {
@@ -183,16 +206,15 @@ okBtns.forEach((btn) => {
     switch (inputID) {
       case "user_data":
         {
-          if (!validateForm(formInputs)) {
+          if (!validateForm(userDataInputs, true)) {
             return;
           }
           fillProgressBar();
         }
         break;
-      case "money_amount":
+      case "state_option_input":
         {
-          const { money_amount } = formInputs;
-          if (!validateForm({ money_amount })) {
+          if (!validateForm(addressInputs, true)) {
             return;
           }
           fillProgressBar();
@@ -210,19 +232,19 @@ okBtns.forEach((btn) => {
   });
 });
 
-/* Checkboxes Logic */
-const checkBtns = document.querySelectorAll(".checkboxes button");
-
-checkBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    checkBtns.forEach((btn) => {
-      btn.classList.remove("selected");
-    });
-    btn.classList.add("selected");
-  });
-});
+// /* Checkboxes Logic */
+// const checkBtns = document.querySelectorAll(".checkboxes button");
+// checkBtns.forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     checkBtns.forEach((btn) => {
+//       btn.classList.remove("selected");
+//     });
+//     btn.classList.add("selected");
+//   });
+// });
 
 /* Enter Event */
+
 window.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -241,31 +263,28 @@ window.addEventListener("keydown", (e) => {
 const formatPhoneNumber = (number) => {
   number = number.replace(/\D/g, "");
 
-  if (number.length < 3) {
-    return "(" + number;
-  } else if (number.length < 6) {
-    return "(" + number.slice(0, 3) + ") " + number.slice(3);
+  if (number.length <= 3) {
+    return number;
+  } else if (number.length <= 6) {
+    return `(${number.slice(0, 3)}) ${number.slice(3)}`;
+  } else if (number.length <= 10) {
+    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6)}`;
   } else {
-    return (
-      "(" +
-      number.slice(0, 3) +
-      ") " +
-      number.slice(3, 6) +
-      "-" +
-      number.slice(6, 10)
-    );
+    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(
+      6,
+      10
+    )}${number.slice(10)}`;
   }
 };
 
 /* Behavior of Required Inputs and Phone Number */
 
-Object.keys(formInputs).forEach((key) => {
-  if (key !== "money_amount" && formInputs[key].required) {
-    const inputs = document.querySelectorAll(".input[required]");
-    document.getElementById(key).addEventListener("input", () => {
+const onRequiredInputting = (inputs) => {
+  Object.values(inputs).forEach((inputID) => {
+    document.getElementById(inputID).addEventListener("input", () => {
       let numOfValidInputs = 0;
-      inputs.forEach((input) => {
-        const id = input.getAttribute("id");
+      Object.values(inputs).forEach((id) => {
+        const input = document.getElementById(id);
         if (input.value) {
           if (id === "email") {
             if (validateEmail(input.value)) {
@@ -280,27 +299,30 @@ Object.keys(formInputs).forEach((key) => {
         scrollBtns[1].classList.add("disabled");
       }
     });
-  } else if (key === "phone") {
-    document.getElementById(key).addEventListener("input", (e) => {
-      const value = e.target.value;
-      const selectedCode = document.querySelector(
-        ".iti__selected-dial-code"
-      ).textContent;
-      if (selectedCode === "+1") {
-        e.target.value = formatPhoneNumber(value);
-      }
-    });
+  });
+};
+
+onRequiredInputting(userDataInputs);
+onRequiredInputting(addressInputs);
+
+const phoneInput = document.getElementById("phone");
+phoneInput.addEventListener("input", (e) => {
+  const value = e.target.value;
+  const selectedCode = document.querySelector(
+    ".iti__selected-dial-code"
+  ).textContent;
+  if (selectedCode === "+1") {
+    e.target.value = formatPhoneNumber(value);
   }
 });
 
 const dateInput = document.getElementById("dob");
 const calendarBtn = document.getElementById("dob-calendar");
-const dateTrigger = document.getElementById("dob-trigger");
+const dateTrigger = document.getElementById("dob_trigger");
 const dateContainer = document.querySelector(".date-container");
 
 const triggerCalendar = () => {
   dateContainer.classList.toggle("focus");
-  console.log(dateInput);
   dateInput.focus();
   dateInput.showPicker();
 };
@@ -324,9 +346,11 @@ dateInput.addEventListener("change", (e) => {
 
   const americanDateFormat = selectedDate.toLocaleDateString("en-US", options);
   dateTrigger.setAttribute("value", americanDateFormat);
+  validateForm(addressInputs);
 });
 
 // document.querySelector("main").scrollTo({
-//   top: window.innerHeight * 2,
+//   top: window.innerHeight * 1,
 //   behavior: "smooth",
 // });
+// document.getElementById(`sec-2`).scrollIntoView({ behavior: "smooth" });
